@@ -1,0 +1,57 @@
+<div id="wrapper">
+  <div class="search-form">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-row col-md-8 mb-3">
+        <input #inputElement type="search" class="form-control" formControlName="search_value" placeholder="Введите название фильма..."
+               (keyup)="getSearchInfo()"
+               list="character"
+        >
+        <datalist id="character">
+          <option *ngFor="let i of searchList.Search" [value]="i.Title"></option>
+        </datalist>
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Поиск
+        </button>
+      </div>
+    </form>
+  </div>
+  <h2>Результаты поиска</h2>
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Год выпуска</th>
+      <th scope="col">Режиссер</th>
+      <th scope="col">Рейтинг IMDB</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="result">
+      <tr>
+        <th class="more" scope="row"
+            (click)="result.Title ? viewInfo = true : viewInfo = false"
+            title="Открыть карточку с описанием"
+        >{{ result.Title }}</th>
+        <td>{{ result.Year }}</td>
+        <td>{{ result.Writer }}</td>
+        <td>{{ result.imdbRating }}</td>
+      </tr>
+      <span *ngIf="result.Response == 'False'">Фильм не найден</span>
+    </tbody>
+  </table>
+  <mat-card class="card-main"
+            *ngIf="viewInfo">
+    <i class="fa fa-times" aria-hidden="true" (click)="viewInfo = false" title="Закрыть"></i>
+    <img mat-card-image
+         [src]="result.Poster"
+         alt="Изображение постера отсутствует"
+         class="card-main__image">
+    <mat-card-title>Название фильма: {{ result.Title }}</mat-card-title>
+    <mat-card-content>Год выпуска: {{ result.Year }}</mat-card-content>
+    <mat-card-content>Режиссер: {{ result.Writer }}</mat-card-content>
+    <mat-card-content>В главных ролях: {{ result.Actors }}</mat-card-content>
+    <mat-card-content>Рейтинг IMDB: {{ result.imdbRating }}</mat-card-content>
+  </mat-card>
+</div>

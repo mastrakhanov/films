@@ -1,0 +1,50 @@
+#wrapper {
+  height: 100vh;
+  overflow: auto;
+  padding: 10px;
+
+  & .search-form {
+
+
+    & .form-row {
+      margin-top: 10px;
+      flex-wrap: nowrap;
+    }
+  }
+
+  & .more:hover {
+    cursor: pointer;
+  }
+
+  & .table {
+    margin-bottom: 30px;
+
+    & span {
+      font-weight: 500;
+    }
+  }
+
+  & .card-main {
+    position: relative;
+    max-width: 400px;
+    max-height: 1000px;
+    margin: 0 auto;
+
+    & i {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    & .card-main__image {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 250px;
+      max-height: 300px;
+    }
+  }
+}
