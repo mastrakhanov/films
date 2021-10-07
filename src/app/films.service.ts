@@ -1,34 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {environment} from '../environments/environment';
-import {map} from 'rxjs/operators';
-import {IFilms} from './films.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { environment } from '../environments/environment';
+import { IFilm, ISearch } from './films.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
-  getFilms(title: string): Observable<IFilms> {
-    return this.http.get<IFilms>(`http://www.omdbapi.com/?t=${title}&apikey=${environment.apiKey}`)
-      .pipe(map((film: IFilms) => {
-        return {
-          ...film,
-          response: film.Response
-        };
-      }));
-  }
+  getFilms = (title: string): Observable<IFilm> =>
+    this.http.get<IFilm>(`http://www.omdbapi.com/?t=${title}&apikey=${environment.apiKey}`)
 
-  getFilmNames(title: string): Observable<IFilms> {
-    return this.http.get<IFilms>(`http://www.omdbapi.com/?s=${title}&apikey=${environment.apiKey}`)
-      .pipe(map((film: IFilms) => {
-        return {
-          ...film,
-          response: film.Response
-        };
-      }));
-  }
+  getFilmNames = (title: string): Observable<ISearch> =>
+    this.http.get<ISearch>(`http://www.omdbapi.com/?s=${title}&apikey=${environment.apiKey}`)
+
 }
