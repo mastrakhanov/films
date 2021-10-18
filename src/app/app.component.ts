@@ -3,8 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, combineLatest, EMPTY, merge, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 
-import { FilmsService } from './films.service';
-import { IFilm, ISearch } from './films.interface';
+import { FilmsService } from './services/films.service';
+import { IFilm, ISearch } from './interfaces';
 
 
 const objectsJSONEqual = <T>(source: T, target: T) => JSON.stringify(source) === JSON.stringify(target);

@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
 
-import { IFilm, ISearch } from '../app/films.interface';
+import { IFilm, ISearch } from '../app/interfaces';
 import { filmStub, searchStub } from './stubs';
 
 

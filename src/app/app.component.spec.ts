@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MockFilmsService } from '../testing/mock-films.service';
 import { filmStub, searchStub } from '../testing/stubs';
 
-import { FilmsService } from './films.service';
+import { FilmsService } from './services/films.service';
 
 import { AppComponent } from './app.component';
 
@@ -57,6 +57,10 @@ describe('AppComponent', () => {
     element.click();
 
     expect(component.submit).toHaveBeenCalledTimes(1);
+  });
+
+  it('searchForm should be truthy', () => {
+    expect(component.searchForm).toBeTruthy();
   });
 
   it('key "Enter" should call submit()', () => {

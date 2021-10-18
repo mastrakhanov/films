@@ -1,4 +1,4 @@
-import { IFilm, ISearch } from '../app/films.interface';
+import { IFilm, ISearch } from '../app/interfaces';
 
 
 export const filmStub: IFilm = { Year: '2018', imdbRating: '6', Actors: 'Actors', Director: 'Director', Title: 'Title', Response: 'True' };
